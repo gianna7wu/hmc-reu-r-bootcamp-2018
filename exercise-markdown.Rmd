@@ -36,4 +36,25 @@ Use of `geom="histogram"`:
 ```{r ggplothist, echo=TRUE, message=FALSE, warning=FALSE}
 p <- qplot(hflightsSub$DepDelay, geom="histogram") 
 p
+
+pdf('myplot.pdf', width = 7, height = 7)
+plot(hflightsSub$ArrDelay, 
+     hflightsSub$DepDelay, 
+     main = "Arrival Delay vs. Departure Delay", 
+     xlab = "Arrival Delay", 
+     ylab = "Departure Delay")
+
+ 
+p <- qplot(hflightsSub$ArrDelay, 
+           hflightsSub$DepDelay,
+           main = "Arrival Delay vs. Departure Delay", 
+           xlab = "Arrival Delay", 
+           ylab = "Departure Delay") 
+
+#5 
+boxplot(hflightsSub$DepDelay ~hflights)
+
+
+bp <- ggplot(hflightsSub, aes(x = DayOfWeek, y = DepDelay, group = DayOfWeek))
++ geom_boxplot()
 ```
